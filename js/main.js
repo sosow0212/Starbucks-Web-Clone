@@ -1,26 +1,7 @@
-const searchEl = document.querySelector('.search');
-const searchInputEl = searchEl.querySelector('input');
-
-searchEl.addEventListener('click', function () {
-  searchInputEl.focus(); // 돋보기를 누르면 강제로 포커스가 맞춰짐
-});
-
-// 돋보기 아이콘에 인풋요소에 포커스가 될 경우
-searchInputEl.addEventListener('focus', function () {
-  searchEl.classList.add('focused');
-  // 포커스가 맞춰지면 focused라는 클래스명 생성이됨
-  searchInputEl.setAttribute('placeholder', '통합검색');
-});
-
-
-// 돋보기 아이콘에 인풋요소에 포커스가 해제될 경우
-searchInputEl.addEventListener('blur', function () {
-  searchEl.classList.remove('focused');
-  // 포커스가 맞춰지면 focused라는 클래스명 생성이됨
-  searchInputEl.setAttribute('placeholder', '');
-});
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
+
 window.addEventListener('scroll', _.throttle(function () {
   if (window.scrollY > 500) {
     // gsap.to(요소, 지속시간, 옵션)
@@ -47,7 +28,6 @@ window.addEventListener('scroll', _.throttle(function () {
 }, 300));
 // _.throttle(함수, 시간ms) - lodacy cdn
 
-const toTopEl = document.querySelector('#to-top');
 toTopEl.addEventListener('click', function() {
   gsap.to(window, .7, {
     scrollTo: 0
@@ -152,6 +132,3 @@ spyEls.forEach(function (spyEl) {
     .addTo(new ScrollMagic.Controller());
 }); 
 
-
-const thisYear = document.querySelector('.this-year');
-thisYear.textContent = new Date().getFullYear();
